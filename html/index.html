@@ -364,28 +364,189 @@ Khách hàng nói gì?
 
 </section>
 
-<section class="cta">
 
-<div class="container text-center">
+<section class="py-5 bg-light">
+  <div class="container">
 
-<h2>
-📥 Nhận File Gia Phả Miễn Phí
-</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
 
-<p>
-Chỉ mất khoảng 1 phút để đăng ký và nhận hướng dẫn sử dụng.
-</p>
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-4">
 
-<a
-href="https://docs.google.com/forms/d/e/1FAIpQLSdP3GmnzDDiueo6JtTkNxdTQgatltLpBAjq-Zby00icDCGTZQ/viewform"
-target="_blank"
-class="btn btn-light btn-lg">
-Đăng ký ngay
-</a>
+            <h2 class="text-center mb-3">
+              📥 Nhận File Gia Phả
+            </h2>
 
-</div>
+            <p class="text-center text-muted mb-4">
+              Vui lòng nhập số Zalo để nhận link tải.
+            </p>
 
+            <form id="downloadForm">
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">
+                  Số điện thoại Zalo
+                </label>
+
+                <input
+                  type="tel"
+                  class="form-control form-control-lg"
+                  id="sdt"
+                  placeholder="Nhập số Zalo của bạn"
+                  required>
+
+                <div class="form-text">
+                  Lưu ý: Số Zalo cần bật cho người lạ tìm kiếm hoặc nhắn tin để nhận link tải.
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-bold">
+                  Chọn phiên bản
+                </label>
+
+                <select
+                  id="phienban"
+                  class="form-select form-select-lg"
+                  required>
+
+                  <option value="">
+                    -- Chọn phiên bản --
+                  </option>
+
+                  <option value="Phiên bản 1 (Miễn phí)">
+                    Phiên bản 1 (Miễn phí)
+                  </option>
+
+                  <option value="Phiên bản 2 (Miễn phí)">
+                    Phiên bản 2 (Miễn phí)
+                  </option>
+
+                  <option value="Phiên bản 3 (300.000 VNĐ)">
+                    Phiên bản 3 (300.000 VNĐ)
+                  </option>
+
+                </select>
+              </div>
+
+              <div class="d-grid">
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg"
+                  id="btnSubmit">
+
+                  📥 Đăng ký nhận file
+
+                </button>
+              </div>
+
+            </form>
+
+            <div
+              id="successBox"
+              class="alert alert-success mt-4 d-none">
+
+              ✅ Đăng ký thành công.<br>
+              Vui lòng kiểm tra Zalo để nhận link tải.<br>
+              Xin cảm ơn!
+
+            </div>
+
+            <div
+              id="errorBox"
+              class="alert alert-danger mt-4 d-none">
+
+              Có lỗi xảy ra, vui lòng thử lại sau.
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </section>
+
+<script>
+
+const WEBHOOK_URL =
+"https://nn2.hoangtuan.net/webhook/giapha-register";
+
+document
+.getElementById("downloadForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const btn =
+      document.getElementById("btnSubmit");
+
+    const sdt =
+      document.getElementById("sdt").value.trim();
+
+    const phienban =
+      document.getElementById("phienban").value;
+
+    if(!sdt){
+        alert("Vui lòng nhập số điện thoại Zalo");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = "Đang gửi...";
+
+    try{
+
+        const response = await fetch(
+          WEBHOOK_URL,
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              sdt:sdt,
+              phienban:phienban
+            })
+          }
+        );
+
+        if(response.ok){
+
+            document
+            .getElementById("downloadForm")
+            .reset();
+
+            document
+            .getElementById("successBox")
+            .classList.remove("d-none");
+
+            document
+            .getElementById("errorBox")
+            .classList.add("d-none");
+
+        }else{
+            throw new Error();
+        }
+
+    }catch(err){
+
+        document
+        .getElementById("errorBox")
+        .classList.remove("d-none");
+
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = "📥 Đăng ký nhận file";
+
+});
+
+</script>
+
 
 <footer>
 🌳 Phần mềm Vẽ Cây Gia Phả Excel
