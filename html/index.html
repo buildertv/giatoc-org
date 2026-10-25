@@ -301,8 +301,7 @@ footer {
                     </ul>
 
                     <a href="#dangky"
-                       class="btn btn-outline-success w-100"
-                       data-version="Phiên bản 1 (Miễn phí)">
+                       class="btn btn-outline-success w-100">
                         Nhận miễn phí
                     </a>
                 </div>
@@ -325,8 +324,7 @@ footer {
                     </ul>
 
                     <a href="#dangky"
-                       class="btn btn-outline-success w-100"
-                       data-version="Phiên bản 2 (Miễn phí)">
+                       class="btn btn-outline-success w-100">
                         Nhận miễn phí
                     </a>
                 </div>
@@ -350,8 +348,7 @@ footer {
                     </ul>
 
                     <a href="#dangky"
-                       class="btn btn-outline-success w-100"
-                       data-version="Phiên bản 3 (300.000 VNĐ)">
+                       class="btn btn-outline-success w-100">
                         Chọn phiên bản
                     </a>
                 </div>
@@ -379,8 +376,7 @@ footer {
                     </ul>
 
                     <a href="#dangky"
-                       class="btn btn-success w-100"
-                       data-version="Phiên bản 3 (500.000 VNĐ)">
+                       class="btn btn-success w-100">
                         Chọn phiên bản
                     </a>
                 </div>
@@ -396,7 +392,7 @@ footer {
                     <h3>Phiên bản 3 - cao cấp</h3>
 
                     <div class="pricing-price">1.000.000đ</div>
-                    <p class="price-note">Sử dụng trong 1.000 năm</p>
+                    <p class="price-note">Sử dụng trong 3.000 năm</p>
 
                     <hr>
 
@@ -408,8 +404,7 @@ footer {
                     </ul>
 
                     <a href="#dangky"
-                       class="btn btn-warning w-100"
-                       data-version="Phiên bản 3 (1.000.000 VNĐ)">
+                       class="btn btn-warning w-100">
                         Chọn phiên bản
                     </a>
                 </div>
@@ -626,21 +621,6 @@ const successBox = document.getElementById("successBox");
 const errorBox = document.getElementById("errorBox");
 
 const defaultButtonText = "📥 Đăng ký nhận file";
-
-
-// Chọn phiên bản từ các nút trên bảng giá.
-document.querySelectorAll("[data-version]").forEach(function(link) {
-    link.addEventListener("click", function() {
-        const version = this.getAttribute("data-version");
-
-        phienbanSelect.value = version;
-
-        // Kiểm tra giá trị đã được chọn đúng chưa
-        console.log("Phiên bản từ nút:", version);
-        console.log("Phiên bản trong form:", phienbanSelect.value);
-    });
-});
-
 
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
