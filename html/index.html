@@ -628,22 +628,16 @@ const errorBox = document.getElementById("errorBox");
 const defaultButtonText = "📥 Đăng ký nhận file";
 
 
-const VERSION_MAP = {
-    "Phiên bản 1 (Miễn phí)": "Phiên bản 1 (Miễn phí)",
-    "Phiên bản 2 (Miễn phí)": "Phiên bản 2 (Miễn phí)",
-    "Phiên bản 3 (300.000 VNĐ)": "Phiên bản 3 (300.000 VNĐ)",
-    "Phiên bản 3 (500.000 VNĐ)": "Phiên bản 3 (500.000 VNĐ)",
-    "Phiên bản 3 (1.000.000 VNĐ)": "Phiên bản 3 (1.000.000 VNĐ)"
-};
-
 // Chọn phiên bản từ các nút trên bảng giá.
 document.querySelectorAll("[data-version]").forEach(function(link) {
     link.addEventListener("click", function() {
-        const version = VERSION_MAP[this.dataset.version];
+        const version = this.getAttribute("data-version");
 
-        if (version) {
-            phienbanSelect.value = version;
-        }
+        phienbanSelect.value = version;
+
+        // Kiểm tra giá trị đã được chọn đúng chưa
+        console.log("Phiên bản từ nút:", version);
+        console.log("Phiên bản trong form:", phienbanSelect.value);
     });
 });
 
