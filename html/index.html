@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -5,560 +6,702 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Vẽ Cây Gia Phả Bằng Excel - Tải Miễn Phí</title>
+<meta name="description" content="Phần mềm vẽ cây gia phả bằng Excel. Các phiên bản miễn phí, 100 năm, 500 năm và 1.000 năm. Lưu giữ nguồn cội, kết nối các thế hệ.">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:Segoe UI,sans-serif;
-    color:#333;
-    line-height:1.8;
+body {
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
+    line-height: 1.8;
 }
 
-.hero{
-    background:#f5fbf7;
-    padding:80px 0;
+.hero {
+    background: #f5fbf7;
+    padding: 80px 0;
 }
 
-.hero h1{
-    font-size:3rem;
-    font-weight:700;
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:50px;
-    font-weight:700;
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
 }
 
-.feature-card{
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 0 15px rgba(0,0,0,.08);
-    background:white;
-    height:100%;
+.feature-card {
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,.08);
+    background: white;
+    height: 100%;
 }
 
-.pricing-card{
-    border-radius:20px;
-    padding:30px;
-    background:white;
-    box-shadow:0 0 15px rgba(0,0,0,.08);
-    height:100%;
+.pricing-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 24px 20px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
 }
 
-.popular{
-    border:3px solid #198754;
-    transform:scale(1.05);
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.10);
 }
 
-.review{
-    background:#fff;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 0 15px rgba(0,0,0,.08);
-    margin-bottom:20px;
+.pricing-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
-.cta{
-    background:#198754;
-    color:white;
-    padding:80px 0;
+.pricing-card ul {
+    padding-left: 20px;
+    margin-bottom: 24px;
 }
 
-.zalo-float{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:70px;
-    height:70px;
-    background:#0068ff;
-    color:white;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:32px;
-    text-decoration:none;
-    z-index:9999;
+.pricing-card li {
+    margin-bottom: 6px;
 }
 
-footer{
-    background:#212529;
-    color:white;
-    padding:30px;
-    text-align:center;
+.pricing-price {
+    font-size: 1.8rem;
+    font-weight: 750;
+    color: #198754;
+    white-space: nowrap;
 }
 
-@media(max-width:768px){
-
-.hero h1{
-    font-size:2rem;
+.pricing-card .price-note {
+    font-size: .9rem;
+    color: #6c757d;
 }
 
-.popular{
-    transform:none;
+.pricing-card .btn {
+    margin-top: auto;
 }
 
+.popular {
+    border: 2px solid #198754;
+    position: relative;
 }
 
+.premium {
+    border: 2px solid #d6a600;
+}
+
+.review {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,.08);
+    margin-bottom: 20px;
+}
+
+.cta {
+    background: #198754;
+    color: white;
+    padding: 80px 0;
+}
+
+.zalo-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background: #0068ff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+footer {
+    background: #212529;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .pricing-row > .pricing-col {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .pricing-row > .pricing-col {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .pricing-row > .pricing-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .pricing-card {
+        padding: 25px;
+    }
+
+    iframe {
+        height: 300px;
+    }
+}
 </style>
-
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
-<div class="container">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h1>🌳 Vẽ Cây Gia Phả Chuyên Nghiệp Bằng Excel</h1>
 
-<div class="row align-items-center">
+                <p class="lead mt-4">
+                    Lưu giữ nguồn cội - Kết nối các thế hệ.
+                </p>
 
-<div class="col-lg-6">
+                <p>
+                    Đã được nhiều trưởng họ, nhà thờ họ và cửa hàng photo
+                    sử dụng để xây dựng gia phả cho gia đình và dòng họ.
+                </p>
 
-<h1>
-🌳 Vẽ Cây Gia Phả Chuyên Nghiệp Bằng Excel
-</h1>
+                <a href="#dangky" class="btn btn-success btn-lg">
+                    📥 Nhận File Miễn Phí
+                </a>
 
-<p class="lead mt-4">
-Lưu giữ nguồn cội - Kết nối các thế hệ.
-</p>
+                <a href="#video" class="btn btn-outline-success btn-lg ms-2">
+                    ▶ Xem Video
+                </a>
+            </div>
 
-<p>
-Đã được nhiều trưởng họ, nhà thờ họ và cửa hàng photo sử dụng để xây dựng gia phả cho gia đình và dòng họ.
-</p>
-
-<a
-href="#dangky"
-class="btn btn-success btn-lg">
-📥 Nhận File Miễn Phí
-</a>
-
-<a
-href="#video"
-class="btn btn-outline-success btn-lg ms-2">
-▶ Xem Video
-</a>
-
-</div>
-
-<div class="col-lg-6 text-center">
-<img src="hero.jpg" class="img-fluid rounded shadow">
-</div>
-
-</div>
-
-</div>
+            <div class="col-lg-6 text-center">
+                <img
+                    src="hero.jpg"
+                    class="img-fluid rounded shadow"
+                    alt="Phần mềm vẽ cây gia phả bằng Excel">
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- TÍNH NĂNG -->
 <section class="py-5">
-
-<div class="container">
-
-<h2 class="section-title">
-Tính năng nổi bật
-</h2>
-
-<div class="row g-4">
-
-<div class="col-md-3">
-<div class="feature-card">
-<h4>🌳 Vẽ gia phả</h4>
-<p>Tạo cây gia phả trực quan từ dữ liệu Excel.</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="feature-card">
-<h4>📅 Ngày giỗ</h4>
-<p>Theo dõi ngày giỗ và các sự kiện quan trọng.</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="feature-card">
-<h4>🎨 Tùy biến</h4>
-<p>Tùy chỉnh màu sắc và giao diện hiển thị.</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="feature-card">
-<h4>👨‍👩‍👧‍👦 Nhiều thế hệ</h4>
-<p>Hỗ trợ gia phả nhiều đời với số lượng thành viên lớn.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="bg-light py-5" id="video">
-
-<div class="container">
-
-<h2 class="section-title">
-Video hướng dẫn
-</h2>
-
-<iframe
-width="100%"
-height="550"
-src="https://www.youtube.com/embed/videoseries?list=PLkXAvo_Xx0ZOQlzPrs7q92ZXcjaaUzHIE"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</section>
-
-<section class="py-5">
-
-<div class="container">
-
-<h2 class="section-title">
-Các phiên bản
-</h2>
-
-<div class="row g-4">
-
-<div class="col-md-4">
-<div class="pricing-card">
-<h3>Phiên bản 1</h3>
-<p>Miễn phí</p>
-<ul>
-<li>Gia phả 3 đời</li>
-<li>Dễ sử dụng</li>
-</ul>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="pricing-card">
-<h3>Phiên bản 2</h3>
-<p>Miễn phí</p>
-<ul>
-<li>Gia phả nhiều đời</li>
-<li>Nâng cấp từ bản 1</li>
-</ul>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="pricing-card popular">
-
-<span class="badge bg-warning text-dark mb-3">
-🔥 Được lựa chọn nhiều nhất
-</span>
-
-<h3>Phiên bản 3</h3>
-
-<h2 class="text-success">
-300.000đ
-</h2>
-
-<ul>
-<li>Sử dụng 100 năm</li>
-<li>Hỗ trợ cập nhật</li>
-<li>Ưu tiên hỗ trợ kỹ thuật</li>
-<li>Nâng cấp tương lai</li>
-</ul>
-
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="bg-light py-5">
-
-<div class="container">
-
-<h2 class="section-title">
-Tại sao không dùng website gia phả?
-</h2>
-
-<div class="table-responsive">
-
-<table class="table table-bordered">
-
-<tr>
-<th>Website Online</th>
-<th>File Excel Gia Phả</th>
-</tr>
-
-<tr>
-<td>Phụ thuộc nhà cung cấp</td>
-<td>✓ Sở hữu hoàn toàn</td>
-</tr>
-
-<tr>
-<td>Có thể ngừng hoạt động</td>
-<td>✓ Sử dụng lâu dài</td>
-</tr>
-
-<tr>
-<td>Cần Internet</td>
-<td>✓ Không cần Internet</td>
-</tr>
-
-<tr>
-<td>Dữ liệu trên máy chủ khác</td>
-<td>✓ Lưu trên máy tính của bạn</td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="py-5">
-
-<div class="container">
-
-<h2 class="section-title">
-Khách hàng nói gì?
-</h2>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br>
-"Mình đang bắt đầu học chạy file này, file cũng dễ dùng. Cho mình add friend để có gì mình hỏi bạn nhé!"
-<br><b>Lý Văn Hiển</b>
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br>
-"Cảm ơn bạn mình thấy dùng tiện hơn nhiều so với Corel, mình làm ở quán photo nên dùng phần mềm này để tạo gia phả cho khách rất tiện."
-<br><b>Vũ Thị Huyền Chang</b>
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br>
-"Mình xem video thấy rất hợp lý nên tin dùng sản phẩm này."
-<br><b>Nguyễn Gia Đông</b>
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br>
-"E định dùng mấy web tạo gia phả mà cũng lưỡng lự do sợ web ngừng hoạt động."
-<br><b>Hoàng Thiện</b>
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br>
-"Cảm ơn file rất dễ dùng, cuối mỗi năm tôi sẽ update 1 lần gia phả."
-<br><b>Alex Dzung</b>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="py-5 bg-light" id="dangky">
-  <div class="container">
-
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-
-        <div class="card shadow border-0 rounded-4">
-          <div class="card-body p-4">
-
-            <h2 class="text-center mb-3">
-              📥 Nhận File Gia Phả
-            </h2>
-
-            <p class="text-center text-muted mb-4">
-              Vui lòng nhập số Zalo để nhận link tải.
-            </p>
-
-            <form id="downloadForm">
-
-              <div class="mb-3">
-                <label class="form-label fw-bold">
-                  Số điện thoại Zalo
-                </label>
-
-                <input
-                  type="tel"
-                  class="form-control form-control-lg"
-                  id="sdt"
-                  placeholder="Nhập số Zalo của bạn"
-                  required>
-
-                <div class="form-text">
-                  Lưu ý: Số Zalo cần bật cho người lạ tìm kiếm hoặc nhắn tin để nhận link tải.
+    <div class="container">
+        <h2 class="section-title">Tính năng nổi bật</h2>
+
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>🌳 Vẽ gia phả</h4>
+                    <p>Tạo cây gia phả trực quan từ dữ liệu Excel.</p>
                 </div>
-              </div>
-
-              <div class="mb-4">
-                <label class="form-label fw-bold">
-                  Chọn phiên bản
-                </label>
-
-                <select
-                  id="phienban"
-                  class="form-select form-select-lg"
-                  required>
-
-                  <option value="">
-                    -- Chọn phiên bản --
-                  </option>
-
-                  <option value="Phiên bản 1 (Miễn phí)">
-                    Phiên bản 1 (Miễn phí)
-                  </option>
-
-                  <option value="Phiên bản 2 (Miễn phí)">
-                    Phiên bản 2 (Miễn phí)
-                  </option>
-
-                  <option value="Phiên bản 3 (300.000 VNĐ)">
-                    Phiên bản 3 (300.000 VNĐ)
-                  </option>
-
-                </select>
-              </div>
-
-              <div class="d-grid">
-                <button
-                  type="submit"
-                  class="btn btn-success btn-lg"
-                  id="btnSubmit">
-
-                  📥 Đăng ký nhận file
-
-                </button>
-              </div>
-
-            </form>
-
-            <div
-              id="successBox"
-              class="alert alert-success mt-4 d-none">
-
-              ✅ Đăng ký thành công.<br>
-              Vui lòng kiểm tra Zalo để nhận link tải.<br>
-              Xin cảm ơn!
-
             </div>
 
-            <div
-              id="errorBox"
-              class="alert alert-danger mt-4 d-none">
-
-              Có lỗi xảy ra, vui lòng thử lại sau.
-
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>📅 Ngày giỗ</h4>
+                    <p>Theo dõi ngày giỗ và các sự kiện quan trọng.</p>
+                </div>
             </div>
 
-          </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>🎨 Tùy biến</h4>
+                    <p>Tùy chỉnh màu sắc và giao diện hiển thị.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>👨‍👩‍👧‍👦 Nhiều thế hệ</h4>
+                    <p>Hỗ trợ xây dựng gia phả nhiều đời với số lượng thành viên lớn.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO -->
+<section class="bg-light py-5" id="video">
+    <div class="container">
+        <h2 class="section-title">Video hướng dẫn</h2>
+
+        
+        <iframe
+            width="100%"
+            height="550"
+            src="https://www.youtube.com/embed/IXMNhfrzsj8"
+            title="Video hướng dẫn vẽ cây gia phả bằng Excel"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+</section>
+
+<!-- BẢNG GIÁ -->
+<section class="py-5" id="phienban">
+    <div class="container">
+        <h2 class="section-title">Các phiên bản phần mềm</h2>
+
+        <p class="text-center text-muted mb-5">
+            Chọn phiên bản phù hợp với nhu cầu xây dựng gia phả của gia đình và dòng họ.
+        </p>
+
+        <div class="row g-4 pricing-row">
+
+            <!-- PHIÊN BẢN 1 -->
+            <div class="pricing-col">
+                <div class="pricing-card">
+                    <h3>Phiên bản 1</h3>
+
+                    <div class="pricing-price">Miễn phí</div>
+                    <p class="price-note">Dành cho người mới bắt đầu</p>
+
+                    <hr>
+
+                    <ul>
+                        <li>Gia phả 3 đời</li>
+                        <li>Dễ sử dụng</li>
+                        <li>Trải nghiệm cách vẽ gia phả bằng Excel</li>
+                    </ul>
+
+                    <a href="#dangky"
+                       class="btn btn-outline-success w-100"
+                       data-version="Phiên bản 1 (Miễn phí)">
+                        Nhận miễn phí
+                    </a>
+                </div>
+            </div>
+
+            <!-- PHIÊN BẢN 2 -->
+            <div class="pricing-col">
+                <div class="pricing-card">
+                    <h3>Phiên bản 2</h3>
+
+                    <div class="pricing-price">Miễn phí</div>
+                    <p class="price-note">Trải nghiệm thêm tính năng</p>
+
+                    <hr>
+
+                    <ul>
+                        <li>Gia phả nhiều đời</li>
+                        <li>Nâng cấp từ bản 1</li>
+                        <li>Làm quen với quy trình xây dựng gia phả</li>
+                    </ul>
+
+                    <a href="#dangky"
+                       class="btn btn-outline-success w-100"
+                       data-version="Phiên bản 2 (Miễn phí)">
+                        Nhận miễn phí
+                    </a>
+                </div>
+            </div>
+
+            <!-- PHIÊN BẢN 3 -->
+            <div class="pricing-col">
+                <div class="pricing-card">
+                    <h3>Phiên bản 3 - cơ bản</h3>
+
+                    <div class="pricing-price">300.000đ</div>
+                    <p class="price-note">Sử dụng trong 100 năm</p>
+
+                    <hr>
+
+                    <ul>
+                        <li>Giới hạn thời gian 100 năm</li>
+                        <li>Hỗ trợ cập nhật</li>
+                        <li>Ưu tiên hỗ trợ kỹ thuật</li>
+                        <li>Phù hợp nhu cầu gia phả cơ bản</li>
+                    </ul>
+
+                    <a href="#dangky"
+                       class="btn btn-outline-success w-100"
+                       data-version="Phiên bản 3 (300.000 VNĐ)">
+                        Chọn phiên bản
+                    </a>
+                </div>
+            </div>
+
+            <!-- PHIÊN BẢN 4 -->
+            <div class="pricing-col">
+                <div class="pricing-card popular">
+                    <span class="badge bg-success mb-3 align-self-start">
+                        ⭐ Đề xuất
+                    </span>
+
+                    <h3>Phiên bản 3 - mở rộng</h3>
+
+                    <div class="pricing-price">500.000đ</div>
+                    <p class="price-note">Sử dụng trong 500 năm</p>
+
+                    <hr>
+
+                    <ul>
+                        <li>Giới hạn thời gian 500 năm</li>
+                        <li>Phù hợp gia phả nhiều thế hệ</li>
+                        <li>Hỗ trợ cập nhật</li>
+                        <li>Ưu tiên hỗ trợ kỹ thuật</li>
+                    </ul>
+
+                    <a href="#dangky"
+                       class="btn btn-success w-100"
+                       data-version="Phiên bản 4 (500.000 VNĐ)">
+                        Chọn phiên bản
+                    </a>
+                </div>
+            </div>
+
+            <!-- PHIÊN BẢN 5 -->
+            <div class="pricing-col">
+                <div class="pricing-card premium">
+                    <span class="badge bg-warning text-dark mb-3 align-self-start">
+                        👑 Cao cấp
+                    </span>
+
+                    <h3>Phiên bản 3 - cao cấp</h3>
+
+                    <div class="pricing-price">1.000.000đ</div>
+                    <p class="price-note">Sử dụng trong 1.000 năm</p>
+
+                    <hr>
+
+                    <ul>
+                        <li>Giới hạn thời gian 1.000 năm</li>
+                        <li>Hướng tới gia phả dòng họ quy mô lớn</li>
+                        <li>Hỗ trợ cập nhật</li>
+                        <li>Ưu tiên hỗ trợ kỹ thuật</li>
+                    </ul>
+
+                    <a href="#dangky"
+                       class="btn btn-warning w-100"
+                       data-version="Phiên bản 3 (1.000.000 VNĐ)">
+                        Chọn phiên bản
+                    </a>
+                </div>
+            </div>
+
         </div>
 
-      </div>
+        <p class="text-center text-muted mt-4 small">
+            Thời hạn nêu trên là giới hạn sử dụng theo phiên bản phần mềm.
+            Vui lòng liên hệ để được tư vấn trước khi mua.
+        </p>
     </div>
-
-  </div>
 </section>
 
+<!-- SO SÁNH -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="section-title">Tại sao không dùng website gia phả?</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered bg-white">
+                <thead>
+                    <tr>
+                        <th>Website Online</th>
+                        <th>File Excel Gia Phả</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Phụ thuộc nhà cung cấp</td>
+                        <td>✓ Chủ động quản lý file</td>
+                    </tr>
+                    <tr>
+                        <td>Có thể ngừng hoạt động</td>
+                        <td>✓ Dữ liệu được lưu trên máy tính của bạn</td>
+                    </tr>
+                    <tr>
+                        <td>Cần Internet khi sử dụng dịch vụ trực tuyến</td>
+                        <td>✓ Có thể làm việc ngoại tuyến</td>
+                    </tr>
+                    <tr>
+                        <td>Dữ liệu có thể lưu trên máy chủ bên ngoài</td>
+                        <td>✓ Chủ động lưu trữ và sao lưu dữ liệu</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ĐÁNH GIÁ -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">Khách hàng nói gì?</h2>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐<br>
+            "Mình đang bắt đầu học chạy file này, file cũng dễ dùng.
+            Cho mình add friend để có gì mình hỏi bạn nhé!"
+            <br><b>Lý Văn Hiển</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐<br>
+            "Cảm ơn bạn mình thấy dùng tiện hơn nhiều so với Corel,
+            mình làm ở quán photo nên dùng phần mềm này để tạo gia phả cho khách rất tiện."
+            <br><b>Vũ Thị Huyền Chang</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐<br>
+            "Mình xem video thấy rất hợp lý nên tin dùng sản phẩm này."
+            <br><b>Nguyễn Gia Đông</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐<br>
+            "E định dùng mấy web tạo gia phả mà cũng lưỡng lự do sợ web ngừng hoạt động."
+            <br><b>Hoàng Thiện</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐<br>
+            "Cảm ơn file rất dễ dùng, cuối mỗi năm tôi sẽ update 1 lần gia phả."
+            <br><b>Alex Dzung</b>
+        </div>
+    </div>
+</section>
+
+<!-- FORM ĐĂNG KÝ -->
+<section class="py-5 bg-light" id="dangky">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+
+                <div class="card shadow border-0 rounded-4">
+                    <div class="card-body p-4 p-md-5">
+
+                        <h2 class="text-center mb-3">
+                            📥 Nhận File Gia Phả
+                        </h2>
+
+                        <p class="text-center text-muted mb-4">
+                            Vui lòng nhập số Zalo và chọn phiên bản cần nhận.
+                        </p>
+
+                        <form id="downloadForm">
+
+                            <div class="mb-3">
+                                <label for="sdt" class="form-label fw-bold">
+                                    Số điện thoại Zalo
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    class="form-control form-control-lg"
+                                    id="sdt"
+                                    name="sdt"
+                                    placeholder="Nhập số Zalo của bạn"
+                                    autocomplete="tel"
+                                    required>
+
+                                <div class="form-text">
+                                    Lưu ý: Số Zalo cần bật cho người lạ tìm kiếm
+                                    hoặc nhắn tin để nhận link tải.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="phienban" class="form-label fw-bold">
+                                    Chọn phiên bản
+                                </label>
+
+                                <select
+                                    id="phienban"
+                                    name="phienban"
+                                    class="form-select form-select-lg"
+                                    required>
+
+                                    <option value="">
+                                        -- Chọn phiên bản --
+                                    </option>
+
+                                    <option value="v1">
+                                        Phiên bản 1 - Miễn phí
+                                    </option>
+
+                                    <option value="v2">
+                                        Phiên bản 2 - Miễn phí
+                                    </option>
+
+                                    <option value="v3.300">
+                                        Phiên bản 3 - 300.000đ - hạn dùng 100 năm
+                                    </option>
+
+                                    <option value="v3.500">
+                                        Phiên bản 3 - 500.000đ - hạn dùng 500 năm
+                                    </option>
+
+                                    <option value="v3.1000">
+                                        Phiên bản 3 - 1.000.000đ - hạn dùng 1.000 năm
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid">
+                                <button
+                                    type="submit"
+                                    class="btn btn-success btn-lg"
+                                    id="btnSubmit">
+                                    📥 Đăng ký nhận file
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div
+                            id="successBox"
+                            class="alert alert-success mt-4 d-none"
+                            role="status">
+
+                            ✅ Đăng ký thành công.<br>
+                            Vui lòng kiểm tra Zalo để nhận link tải.<br>
+                            Xin cảm ơn!
+                        </div>
+
+                        <div
+                            id="errorBox"
+                            class="alert alert-danger mt-4 d-none"
+                            role="alert">
+
+                            Có lỗi xảy ra, vui lòng thử lại sau.
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JAVASCRIPT -->
 <script>
-
 const WEBHOOK_URL =
-"https://nn2.hoangtuan.net/webhook/giapha-register";
+    "https://nn2.hoangtuan.net/webhook/giapha-register";
 
-document
-.getElementById("downloadForm")
-.addEventListener("submit", async function(e){
+const form = document.getElementById("downloadForm");
+const btn = document.getElementById("btnSubmit");
+const sdtInput = document.getElementById("sdt");
+const phienbanSelect = document.getElementById("phienban");
+const successBox = document.getElementById("successBox");
+const errorBox = document.getElementById("errorBox");
 
+const defaultButtonText = "📥 Đăng ký nhận file";
+
+// Chọn phiên bản từ các nút trên bảng giá.
+document.querySelectorAll("[data-version]").forEach(function(link) {
+    link.addEventListener("click", function() {
+        phienbanSelect.value = this.dataset.version;
+    });
+});
+
+form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const btn =
-      document.getElementById("btnSubmit");
+    const sdt = sdtInput.value.trim();
+    const phienban = phienbanSelect.value;
 
-    const sdt =
-      document.getElementById("sdt").value.trim();
+    successBox.classList.add("d-none");
+    errorBox.classList.add("d-none");
 
-    const phienban =
-      document.getElementById("phienban").value;
+    if (!sdt) {
+        alert("Vui lòng nhập số điện thoại Zalo.");
+        sdtInput.focus();
+        return;
+    }
 
-    if(!sdt){
-        alert("Vui lòng nhập số điện thoại Zalo");
+    if (!phienban) {
+        alert("Vui lòng chọn phiên bản.");
+        phienbanSelect.focus();
         return;
     }
 
     btn.disabled = true;
-    btn.innerHTML = "Đang gửi...";
+    btn.textContent = "Đang gửi...";
 
-    try{
-
-        const response = await fetch(
-          WEBHOOK_URL,
-          {
-            method:"POST",
-            headers:{
-              "Content-Type":"application/json"
+    try {
+        const response = await fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify({
-              sdt:sdt,
-              phienban:phienban
+            body: JSON.stringify({
+                sdt: sdt,
+                phienban: phienban
             })
-          }
-        );
+        });
 
-        if(response.ok){
-
-            document
-            .getElementById("downloadForm")
-            .reset();
-
-            document
-            .getElementById("successBox")
-            .classList.remove("d-none");
-
-            document
-            .getElementById("errorBox")
-            .classList.add("d-none");
-
-        }else{
-            throw new Error();
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
         }
 
-    }catch(err){
+        form.reset();
+        successBox.classList.remove("d-none");
+        errorBox.classList.add("d-none");
 
-        document
-        .getElementById("errorBox")
-        .classList.remove("d-none");
+    } catch (err) {
+        console.error("Lỗi đăng ký nhận file:", err);
+        errorBox.classList.remove("d-none");
 
+    } finally {
+        btn.disabled = false;
+        btn.textContent = defaultButtonText;
     }
-
-    btn.disabled = false;
-    btn.innerHTML = "📥 Đăng ký nhận file";
-
 });
-
 </script>
 
-
 <footer>
-🌳 Phần mềm Vẽ Cây Gia Phả Excel
+    🌳 Phần mềm Vẽ Cây Gia Phả Excel
+    <br>
+    <small>Lưu giữ nguồn cội - Kết nối các thế hệ.</small>
 </footer>
 
 <a
-href="https://zalo.me/buildertv"
-target="_blank"
-class="zalo-float">
-💬
+    href="https://zalo.me/buildertv"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="zalo-float"
+    aria-label="Liên hệ Zalo BuilderTV">
+    💬
 </a>
 
 </body>
