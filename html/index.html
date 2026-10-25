@@ -320,7 +320,7 @@ footer {
 
                     <ul>
                         <li>Gia phả nhiều đời</li>
-                        <li>Nâng cấp từ bản 1</li>
+                        <li>Nâng cấp vẽ được nhiều đời</li>
                         <li>Làm quen với quy trình xây dựng gia phả</li>
                     </ul>
 
@@ -357,7 +357,7 @@ footer {
                 </div>
             </div>
 
-            <!-- PHIÊN BẢN 4 -->
+            <!-- PHIÊN BẢN 3 -->
             <div class="pricing-col">
                 <div class="pricing-card popular">
                     <span class="badge bg-success mb-3 align-self-start">
@@ -380,13 +380,13 @@ footer {
 
                     <a href="#dangky"
                        class="btn btn-success w-100"
-                       data-version="Phiên bản 4 (500.000 VNĐ)">
+                       data-version="Phiên bản 3 (500.000 VNĐ)">
                         Chọn phiên bản
                     </a>
                 </div>
             </div>
 
-            <!-- PHIÊN BẢN 5 -->
+            <!-- PHIÊN BẢN 3.1000 -->
             <div class="pricing-col">
                 <div class="pricing-card premium">
                     <span class="badge bg-warning text-dark mb-3 align-self-start">
@@ -401,7 +401,7 @@ footer {
                     <hr>
 
                     <ul>
-                        <li>Giới hạn thời gian 1.000 năm</li>
+                        <li>Giới hạn thời gian 3.000 năm</li>
                         <li>Hướng tới gia phả dòng họ quy mô lớn</li>
                         <li>Hỗ trợ cập nhật</li>
                         <li>Ưu tiên hỗ trợ kỹ thuật</li>
@@ -571,7 +571,7 @@ footer {
                                     </option>
 
                                     <option value="v3.1000">
-                                        Phiên bản 3 - 1.000.000đ - hạn dùng 1.000 năm
+                                        Phiên bản 3 - 1.000.000đ - hạn dùng 3.000 năm
                                     </option>
                                 </select>
                             </div>
@@ -627,12 +627,26 @@ const errorBox = document.getElementById("errorBox");
 
 const defaultButtonText = "📥 Đăng ký nhận file";
 
+
+const VERSION_MAP = {
+    "Phiên bản 1 (Miễn phí)": "v1",
+    "Phiên bản 2 (Miễn phí)": "v2",
+    "Phiên bản 3 (300.000 VNĐ)": "v3.300",
+    "Phiên bản 3 (500.000 VNĐ)": "v3.500",
+    "Phiên bản 3 (1.000.000 VNĐ)": "v3.1000"
+};
+
 // Chọn phiên bản từ các nút trên bảng giá.
 document.querySelectorAll("[data-version]").forEach(function(link) {
     link.addEventListener("click", function() {
-        phienbanSelect.value = this.dataset.version;
+        const version = VERSION_MAP[this.dataset.version];
+
+        if (version) {
+            phienbanSelect.value = version;
+        }
     });
 });
+
 
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
