@@ -615,22 +615,19 @@ footer {
 
 <!-- JAVASCRIPT -->
 <script>
-const WEBHOOK_URL =
-    "https://nn2.hoangtuan.net/webhook/giapha-register";
-
+const WEBHOOK_URL = "https://nn2.hoangtuan.net/webhook/giapha-register";
 const form = document.getElementById("downloadForm");
 const btn = document.getElementById("btnSubmit");
 const sdtInput = document.getElementById("sdt");
 const phienbanSelect = document.getElementById("phienban");
 const successBox = document.getElementById("successBox");
 const errorBox = document.getElementById("errorBox");
-
 const defaultButtonText = "📥 Đăng ký nhận file";
 
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const sdt = sdtInput.value.trim();
+    let sdt = sdtInput.value.trim();
     const phienban = phienbanSelect.value;
 
     successBox.classList.add("d-none");
@@ -641,6 +638,22 @@ form.addEventListener("submit", async function(e) {
         sdtInput.focus();
         return;
     }
+
+    // --- BẮT ĐẦU XỬ LÝ CHUẨN HÓA SỐ ĐIỆN THOẠI ---
+    // 1. Xóa khoảng trắng, dấu chấm, dấu gạch ngang
+    sdt = sdt.replace(/[\s\-\.]/g, '');
+
+    // 2. Chuyển đổi các đầu số +84, 84, +840, 840 thành 0
+    sdt = sdt.replace(/^(?:\+84|84)0?/, '0');
+
+    // 3. Kiểm tra định dạng (phải có đúng 10 số và bắt đầu bằng số 0)
+    const phoneRegex = /^0\d{9}$/;
+    if (!phoneRegex.test(sdt)) {
+        alert("Số điện thoại không hợp lệ! Vui lòng nhập đúng số điện thoại gồm 10 chữ số (Ví dụ: 0323456789).");
+        sdtInput.focus();
+        return;
+    }
+    // --- KẾT THÚC XỬ LÝ CHUẨN HÓA ---
 
     if (!phienban) {
         alert("Vui lòng chọn phiên bản.");
@@ -658,7 +671,7 @@ form.addEventListener("submit", async function(e) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                sdt: sdt,
+                sdt: sdt, // Gửi đi số điện thoại đã được chuẩn hóa (ví dụ: 0123456789)
                 phienban: phienban
             })
         });
