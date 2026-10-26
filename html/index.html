@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -258,7 +257,6 @@ footer {
     <div class="container">
         <h2 class="section-title">Video hướng dẫn</h2>
 
-        
         <iframe
             width="100%"
             height="550"
@@ -531,12 +529,14 @@ footer {
                                     name="sdt"
                                     placeholder="Nhập số Zalo của bạn"
                                     autocomplete="tel"
+                                    pattern="^0\d{9}$"
+                                    title="Số điện thoại phải gồm đúng 10 chữ số và bắt đầu bằng số 0"
                                     required>
 
                                 <div class="form-text">
-                                    Lưu ý: Số Zalo cần bật cho người lạ tìm kiếm
-                                    hoặc nhắn tin để nhận link tải.
-                                </div>
+                    Lưu ý: Số Zalo cần bật cho người lạ tìm kiếm hoặc nhắn tin để nhận link tải.
+                    Nếu bạn không muốn nhận file qua Zalo hãy đăng ký nhận qua email theo link sau: <a href="https://forms.gle/KJaPAnTgQscMWwzY6" target="_blank" rel="noopener noreferrer">Đăng ký qua Email</a>
+                </div>
                             </div>
 
                             <div class="mb-4">
@@ -553,23 +553,23 @@ footer {
                                     <option value="" disabled selected>
                                         -- Chọn phiên bản --
                                     </option>
-                                
+                                    
                                     <option value="Phiên bản 1 - Miễn phí">
                                         Phiên bản 1 - Miễn phí (3 đời)
                                     </option>
-                                
+                                    
                                     <option value="Phiên bản 2 - Miễn phí">
                                         Phiên bản 2 - Miễn phí (Nhiều đời)
                                     </option>
-                                
+                                    
                                     <option value="Phiên bản 3 - 300.000đ (100 năm)">
                                         Phiên bản 3 - 300.000đ - Hạn dùng 100 năm
                                     </option>
-                                
+                                    
                                     <option value="Phiên bản 3 - 500.000đ (500 năm)">
                                         Phiên bản 3 - 500.000đ - Hạn dùng 500 năm
                                     </option>
-                                
+                                    
                                     <option value="Phiên bản 3 - 1.000.000đ (3.000 năm)">
                                         Phiên bản 3 - 1.000.000đ - Hạn dùng 3.000 năm
                                     </option>
@@ -640,13 +640,9 @@ form.addEventListener("submit", async function(e) {
     }
 
     // --- BẮT ĐẦU XỬ LÝ CHUẨN HÓA SỐ ĐIỆN THOẠI ---
-    // 1. Xóa khoảng trắng, dấu chấm, dấu gạch ngang
     sdt = sdt.replace(/[\s\-\.]/g, '');
-
-    // 2. Chuyển đổi các đầu số +84, 84, +840, 840 thành 0
     sdt = sdt.replace(/^(?:\+84|84)0?/, '0');
 
-    // 3. Kiểm tra định dạng (phải có đúng 10 số và bắt đầu bằng số 0)
     const phoneRegex = /^0\d{9}$/;
     if (!phoneRegex.test(sdt)) {
         alert("Số điện thoại không hợp lệ! Vui lòng nhập đúng số điện thoại gồm 10 chữ số (Ví dụ: 0323456789).");
@@ -671,7 +667,7 @@ form.addEventListener("submit", async function(e) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                sdt: sdt, // Gửi đi số điện thoại đã được chuẩn hóa (ví dụ: 0123456789)
+                sdt: sdt,
                 phienban: phienban
             })
         });
